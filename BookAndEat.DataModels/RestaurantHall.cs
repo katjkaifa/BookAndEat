@@ -5,11 +5,14 @@ using System.Text;
 
 namespace BookAndEat.DataModels
 {
-    public class DishCategory : EntityInt, IHasCreationTime
+    public class RestaurantHall: EntityInt, IHasCreationTime
     {
         public string Name { get; set; }
         public DateTime CreationTime { get; set; }
 
-        public List<Dish> Dishes { get; set; }
+        public int RestaurantId { get; set; }
+        public Restaurant Restaurant { get; set; }
+
+        public List<RestaurantTable> RestaurantTables { get; set; }
     }
 }

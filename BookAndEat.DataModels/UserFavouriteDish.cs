@@ -5,15 +5,14 @@ using System.Text;
 
 namespace BookAndEat.DataModels
 {
-    public class DishContaining : EntityInt, IHasCreationTime
+    public class UserFavouriteDish: EntityInt, IHasCreationTime
     {
-        public double Quantity { get; set; }
         public DateTime CreationTime { get; set; }
+
+        public int UserFavouriteId { get; set; }
+        public UserFavourite UserFavourite { get; set; }
 
         public int DishId { get; set; }
         public Dish Dish { get; set; }
-
-        public int ProductId { get; set; }
-        public Product Product { get; set; }
     }
 }

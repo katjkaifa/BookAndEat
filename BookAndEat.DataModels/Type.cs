@@ -5,9 +5,8 @@ using System.Text;
 
 namespace BookAndEat.DataModels
 {
-    public class Type: IHasStringId, IHasCreationTime
+    public class Type: EntityInt, IHasCreationTime
     {
-        public string Id { get; set; }
         public string Name { get; set; }
         public DateTime CreationTime { get; set; }
 
