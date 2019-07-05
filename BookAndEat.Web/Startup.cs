@@ -61,7 +61,7 @@ namespace BookAndEat.Web
                 c.IncludeXmlComments(xmlPath);
             });
 
-            services.AddDbContext<ApplicationDbContext>();
+            //services.AddDbContext<ApplicationDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
