@@ -14,7 +14,7 @@ namespace BookAndEat.DataModels
         public DateTime CreationTime { get; set; }
         public DateTime? LastModificationTime { get; set; }
 
-        public int SupplierId { get; set; }
+        public int? SupplierId { get; set; }
         public Supplier Supplier { get; set; }
 
         public string UserId { get; set; }

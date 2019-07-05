@@ -1,7 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookAndEat.DataAccess\BookAndEat.DataAccess.csproj" />
+    <ProjectReference Include="..\BookAndEat.DataModels\BookAndEat.DataModels.csproj" />
+  </ItemGroup>
 
 </Project>

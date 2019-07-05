@@ -16,6 +16,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
+using BookAndEat.Services;
+using BookAndEat.DataAccess;
 
 namespace BookAndEat.Web
 {
@@ -37,6 +39,8 @@ namespace BookAndEat.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddScoped<IUserService, UserService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

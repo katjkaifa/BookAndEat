@@ -7,14 +7,14 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <!--<DocumentationFile>bin\Debug\netcoreapp2.1\BookAndEat.xml</DocumentationFile>-->
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\Debug\netcoreapp2.1\BookAndEat.Web.xml</DocumentationFile>
+    <!--<GenerateDocumentationFile>true</GenerateDocumentationFile>-->
     <NoWarn>1701;1702;1591</NoWarn>
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netcoreapp2.1\BookAndEat.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netcoreapp2.1\BookAndEat.Web.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
@@ -29,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BookAndEat.DataAccess\BookAndEat.DataAccess.csproj" />
     <ProjectReference Include="..\BookAndEat.DataModels\BookAndEat.DataModels.csproj" />
+    <ProjectReference Include="..\BookAndEat.Services\BookAndEat.Services.csproj" />
   </ItemGroup>
 
 </Project>

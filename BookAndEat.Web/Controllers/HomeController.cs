@@ -5,13 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookAndEat.Web.Models;
+using BookAndEat.Services;
 
 namespace BookAndEat.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        public IActionResult Index()
+        private readonly IUserService userService;
+
+        public HomeController(IUserService userService)
         {
+            this.userService = userService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            await userService.Foo();
             return View();
         }
 
