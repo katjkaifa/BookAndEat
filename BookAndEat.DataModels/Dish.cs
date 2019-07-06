@@ -22,5 +22,7 @@ namespace BookAndEat.DataModels
         public DishCategory DishCategory { get; set; }
 
         public List<DishContaining> DishContainings { get; set; }
+        //public List<UserFavouriteDish> UserFavouriteDishes { get; set; }
+        //public List<OrderDetail> OrderDetails { get; set; }
     }
 }

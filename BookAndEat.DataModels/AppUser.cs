@@ -9,7 +9,7 @@ namespace BookAndEat.DataModels
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         public DateTime CreationTime { get; set; }
         public DateTime? LastModificationTime { get; set; }
@@ -18,5 +18,6 @@ namespace BookAndEat.DataModels
         public List<UserComment> UserComments { get; set; }
         public List<UserFavourite> UserFavourites { get; set; }
         public List<Order> Orders { get; set; }
+        public List<UserRestaurant> UserRestaurants { get; set; }
     }
 }

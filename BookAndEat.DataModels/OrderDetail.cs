@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BookAndEat.DataModels
 {
+    // TODO: Add to DB
     public class OrderDetail: EntityInt, IAudited
     {
         public int Quantity { get; set; }

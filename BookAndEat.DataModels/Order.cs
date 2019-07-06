@@ -22,5 +22,6 @@ namespace BookAndEat.DataModels
         public Restaurant Restaurant { get; set; }
 
         public List<OrderTable> OrderTables { get; set; }
+        //public List<OrderDetail> OrderDetails { get; set; }
     }
 }

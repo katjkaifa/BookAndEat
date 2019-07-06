@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BookAndEat.DataModels
 {
+    // TODO: Add to DB
     public class UserFavouriteDish: EntityInt, IHasCreationTime
     {
         public DateTime CreationTime { get; set; }

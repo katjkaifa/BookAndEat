@@ -15,6 +15,6 @@ namespace BookAndEat.DataModels
         public int RestaurantId { get; set; }
         public Restaurant Restaurant { get; set; }
 
-        public List<UserFavouriteDish> UserFavouriteDishes { get; set; }
+        //public List<UserFavouriteDish> UserFavouriteDishes { get; set; }
     }
 }
