@@ -18,6 +18,9 @@ using System.Reflection;
 using System.IO;
 using BookAndEat.Services;
 using BookAndEat.DataAccess;
+using BookAndEat.DataModels;
+using BookAndEat.DataAccess.Identity;
+using BookAndEat.Common;
 
 namespace BookAndEat.Web
 {
@@ -41,6 +44,7 @@ namespace BookAndEat.Web
             });
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRestaurantService, RestaurantService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -99,10 +103,10 @@ namespace BookAndEat.Web
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            UpdateDatabase(app);
+            SeedDatabase(app);
         }
 
-        private static void UpdateDatabase(IApplicationBuilder app)
+        private static void SeedDatabase(IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices
                 .GetRequiredService<IServiceScopeFactory>()
@@ -111,6 +115,86 @@ namespace BookAndEat.Web
                 using (var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>())
                 {
                     context.Database.Migrate();
+                }
+            }
+        }
+
+        private static void SeedRoles(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                      .CreateScope())
+            {
+                using (var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>())
+                using (var userManager = serviceScope.ServiceProvider.GetService<UserManager<AppUser>>())
+                using (var userStore = serviceScope.ServiceProvider.GetService<AppUserStore>())
+                {
+                    bool userRoleExists = roleManager.RoleExistsAsync(AppRoles.AppAdmin)
+                        .GetAwaiter()
+                        .GetResult();
+                    if (!userRoleExists)
+                    {
+                        var role = new IdentityRole();
+                        role.Name = AppRoles.AppAdmin;
+                        roleManager.CreateAsync(role).GetAwaiter().GetResult();
+                    }
+
+                    userRoleExists = roleManager.RoleExistsAsync(AppRoles.Admin)
+                        .GetAwaiter()
+                        .GetResult();
+                    if (!userRoleExists)
+                    {
+                        var role = new IdentityRole();
+                        role.Name = AppRoles.Admin;
+                        roleManager.CreateAsync(role).GetAwaiter().GetResult();
+                    }
+
+                    userRoleExists = roleManager.RoleExistsAsync(AppRoles.Manager)
+                        .GetAwaiter()
+                        .GetResult();
+                    if (!userRoleExists)
+                    {
+                        var role = new IdentityRole();
+                        role.Name = AppRoles.Manager;
+                        roleManager.CreateAsync(role).GetAwaiter().GetResult();
+                    }
+
+                    userRoleExists = roleManager.RoleExistsAsync(AppRoles.Waiter)
+                        .GetAwaiter()
+                        .GetResult();
+                    if (!userRoleExists)
+                    {
+                        var role = new IdentityRole();
+                        role.Name = AppRoles.Waiter;
+                        roleManager.CreateAsync(role).GetAwaiter().GetResult();
+                    }
+
+                    userRoleExists = roleManager.RoleExistsAsync(AppRoles.User)
+                        .GetAwaiter()
+                        .GetResult();
+                    if (!userRoleExists)
+                    {
+                        var role = new IdentityRole();
+                        role.Name = AppRoles.User;
+                        roleManager.CreateAsync(role).GetAwaiter().GetResult();
+                    }
+
+                    AppUser appUser = userManager.FindByNameAsync("adminUser").GetAwaiter().GetResult();
+                    if (appUser == null)
+                    {
+                        appUser = new AppUser();
+                        appUser.DateOfBirth = new DateTime(1997, 12, 07);
+                        appUser.Email = "herbutkatia@gmail.com";
+                        appUser.EmailConfirmed = true;
+                        appUser.FirstName = "Admin";
+                        appUser.LastName = "Admin";
+                        appUser.PhoneNumber = "380997028035";
+                        appUser.PhoneNumberConfirmed = true;
+
+                        userManager.CreateAsync(appUser).GetAwaiter().GetResult();
+                    }
+
+                    userStore.AddToRoleAsync(appUser, null, AppRoles.AppAdmin);
                 }
             }
         }

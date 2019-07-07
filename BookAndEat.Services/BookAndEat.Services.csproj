@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookAndEat.Common\BookAndEat.Common.csproj" />
     <ProjectReference Include="..\BookAndEat.DataAccess\BookAndEat.DataAccess.csproj" />
     <ProjectReference Include="..\BookAndEat.DataModels\BookAndEat.DataModels.csproj" />
   </ItemGroup>

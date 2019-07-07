@@ -7,10 +7,10 @@ namespace BookAndEat.Services
 {
     public class UserService: IUserService
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext dbContext;
         public UserService(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            dbContext = dbContext;
         }
 
         public async Task Foo()

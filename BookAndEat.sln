@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookAndEat.Web", "BookAndEat.Web\BookAndEat.Web.csproj", "{E33B5BA8-BEE2-4E63-B121-FF730A9C7CB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookAndEat.Web", "BookAndEat.Web\BookAndEat.Web.csproj", "{E33B5BA8-BEE2-4E63-B121-FF730A9C7CB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookAndEat.DataAccess", "BookAndEat.DataAccess\BookAndEat.DataAccess.csproj", "{FCB46FF1-D953-4838-B25B-A8DC00425661}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookAndEat.DataAccess", "BookAndEat.DataAccess\BookAndEat.DataAccess.csproj", "{FCB46FF1-D953-4838-B25B-A8DC00425661}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookAndEat.DataModels", "BookAndEat.DataModels\BookAndEat.DataModels.csproj", "{F7F800AD-0F67-49FC-9191-0221466C3789}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookAndEat.DataModels", "BookAndEat.DataModels\BookAndEat.DataModels.csproj", "{F7F800AD-0F67-49FC-9191-0221466C3789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookAndEat.Services", "BookAndEat.Services\BookAndEat.Services.csproj", "{F351B21C-66EF-46D6-9174-3391E6628592}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookAndEat.Services", "BookAndEat.Services\BookAndEat.Services.csproj", "{F351B21C-66EF-46D6-9174-3391E6628592}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookAndEat.Common", "BookAndEat.Common\BookAndEat.Common.csproj", "{FFBFA208-12DC-4CAE-9389-3F6CD0036761}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F351B21C-66EF-46D6-9174-3391E6628592}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F351B21C-66EF-46D6-9174-3391E6628592}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F351B21C-66EF-46D6-9174-3391E6628592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFBFA208-12DC-4CAE-9389-3F6CD0036761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFBFA208-12DC-4CAE-9389-3F6CD0036761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFBFA208-12DC-4CAE-9389-3F6CD0036761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFBFA208-12DC-4CAE-9389-3F6CD0036761}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
