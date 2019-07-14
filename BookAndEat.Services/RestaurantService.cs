@@ -1,5 +1,6 @@
 ﻿using BookAndEat.DataAccess;
 using BookAndEat.DataModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,17 @@ namespace BookAndEat.Services
         #region Restaurant
         public async Task<Restaurant> GetRestaurantById(int restaurntId)
         {
-            Restaurant result = dbContext.Restaurants.Where(x => x.Id == restaurntId).FirstOrDefault();
-            return await Task.FromResult(result);
+            Restaurant result = await dbContext.Restaurants
+                .Where(x => x.Id == restaurntId)
+                .FirstOrDefaultAsync();
+            return result;
         }
         public async Task<int> SaveRestaurant(Restaurant restaurant)
         {
+            if (restaurant == null)
+            {
+                throw new ArgumentNullException(nameof(restaurant), "Parameter is null");
+            }
             if (restaurant.Id == 0)
             {
                 dbContext.Restaurants.Add(restaurant);
@@ -31,34 +38,32 @@ namespace BookAndEat.Services
             else
             {
                 Restaurant dbEntry = dbContext.Restaurants.Find(restaurant.Id);
-                if (dbEntry != null)
+                if (dbEntry == null)
                 {
-                    dbEntry.Name = restaurant.Name;
-                    dbEntry.ShortDescription = restaurant.ShortDescription;
-                    dbEntry.LongDescription = restaurant.LongDescription;
-                    dbEntry.Photo = restaurant.Photo;
+                    throw new InvalidOperationException("Restaurant not found");
                 }
+                dbEntry.Name = restaurant.Name;
+                dbEntry.ShortDescription = restaurant.ShortDescription;
+                dbEntry.LongDescription = restaurant.LongDescription;
+                dbEntry.Photo = restaurant.Photo;
             }
 
             await dbContext.SaveChangesAsync();
 
             return restaurant.Id;
         }
-        public async Task<List<Restaurant>> GetAllRestaurants()
+        public Task<List<Restaurant>> GetAllRestaurants()
         {
-            List<Restaurant> result = null;
-
-            result = dbContext.Restaurants.ToList();
-
-            return await Task.FromResult(result);
+            return dbContext.Restaurants.ToListAsync();
         }
         public async Task<Restaurant> DeleteRestaurant(int restaurantId)
         {
-            Restaurant dbEntry = dbContext.Restaurants.Find(restaurantId);
-            if (dbEntry != null)
+            Restaurant dbEntry = await dbContext.Restaurants.FindAsync(restaurantId);
+            if (dbEntry == null)
             {
-                dbContext.Restaurants.Remove(dbEntry);
+                throw new InvalidOperationException("Restaurant not found");
             }
+            dbContext.Restaurants.Remove(dbEntry);
 
             await dbContext.SaveChangesAsync();
 

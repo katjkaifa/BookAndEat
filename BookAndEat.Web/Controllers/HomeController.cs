@@ -20,7 +20,6 @@ namespace BookAndEat.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            await userService.Foo();
             return View();
         }
 

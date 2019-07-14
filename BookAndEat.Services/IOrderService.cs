@@ -16,10 +16,10 @@ namespace BookAndEat.Services
         #endregion Order
 
         #region OrderDetail
-        Task<OrderDetail> GetOrderDetailById(int orderDetailId);
-        Task<int> SaveOrderDetail(OrderDetail orderDetail);
-        Task<List<OrderDetail>> GetAllOrderDetails();
-        Task<OrderDetail> DeleteOrderDetail(int orderDetailId);
+        //Task<OrderDetail> GetOrderDetailById(int orderDetailId);
+        //Task<int> SaveOrderDetail(OrderDetail orderDetail);
+        //Task<List<OrderDetail>> GetAllOrderDetails();
+        //Task<OrderDetail> DeleteOrderDetail(int orderDetailId);
         #endregion OrderDetail
 
         #region OrderTable
